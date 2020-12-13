@@ -52,12 +52,20 @@ def test():
 
 def show(seccionEspecifica=''):
     clrscr()
-    for seccion in libreta:
-        betainfo(seccion)
-        print(seccion)
-        for nota in libreta[seccion]:
-            print(nota, libreta[seccion][nota]['text'])
-        print()
+    indent = 2
+    espacios = ' ' * (indent-1)
+    if seccionEspecifica:
+        print(seccionEspecifica)
+        for nota in libreta[seccionEspecifica]:
+            print(espacios, nota, libreta[seccionEspecifica][nota]['text'])
+    else:
+        print("Todas las notas de todas las secciones:")
+        for seccion in libreta:
+            betainfo(seccion)
+            print(seccion)
+            for nota in libreta[seccion]:
+                print(espacios, nota, libreta[seccion][nota]['text'])
+            print()
 
 
 def add(msj='', seccion=DEFAULT_SECTION):
@@ -99,10 +107,14 @@ def main():
         betainfo('more than one argument')
         if argv[1] == 'menu':
             betainfo('recognized argument')
-            if argv[1] in v_args:
-                v_args[1]()
+            menu()
+        elif argv[1] == 'add':
+            add(argv[2])
         else:
-            print("Unrecognized yet:", argv[1])
+            if argv[1] in libreta:
+                show(argv[1])
+            else:
+                print("Unrecognized yet:", argv[1])
     
 
 if __name__ == "__main__":    
