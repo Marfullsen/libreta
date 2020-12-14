@@ -11,33 +11,8 @@ DEFAULT_SECTION = 'TODO' # Sección por defecto.
 
 v_args = ['', 'add']
 
-
 debug = False
-libreta = {
-            DEFAULT_SECTION : 
-            {
-                1 : 
-                {
-                    'text' : 'Hello world!'
-                }
-            },
-            'Pruebas de la semana' :
-            {
-                1 : 
-                {
-                    'text' : 'lenguaje'
-                }
-            },
-            'Salidas de hoy' :
-            {
-                1 : {
-                    'text' : 'Ir al Kayak'
-                },
-                2 : {
-                    'text' : 'Ir a la playa'
-                }
-            },
-        }
+libreta = {DEFAULT_SECTION:{1:{'text':'Hello-world!'},2:{'text':'Commands: ADD, ADD -S "ASDA"'}},'Pruebas de la semana':{1:{'text':'lenguaje'}},'Salidas de hoy':{1:{'text':'Ir al Kayak'},2:{'text':'Ir a laplaya'}},}
 
 def betainfo(msg):
     if debug:
@@ -82,7 +57,7 @@ def add(msj='', seccion=DEFAULT_SECTION):
     libreta[seccion][ID_NOTA_NUEVA]['text'] = msj
 
     print('Nota agregada.')
-    show()
+    #show()
 
 def menu():
     print(
