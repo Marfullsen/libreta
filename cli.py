@@ -52,23 +52,28 @@ def test():
 
 def show(seccionEspecifica=''):
     clrscr()
-    indent = 2
+    indent = 3
     espacios = ' ' * (indent-1)
+    sub1 = espacios
+    sub2 = espacios * 2
     if seccionEspecifica:
-        print(seccionEspecifica)
+        print(sub1, seccionEspecifica)
         for nota in libreta[seccionEspecifica]:
-            print(espacios, nota, libreta[seccionEspecifica][nota]['text'])
+            print(sub2, nota, libreta[seccionEspecifica][nota]['text'])
     else:
         print("Todas las notas de todas las secciones:")
         for seccion in libreta:
             betainfo(seccion)
-            print(seccion)
+            print(sub1, seccion)
             for nota in libreta[seccion]:
-                print(espacios, nota, libreta[seccion][nota]['text'])
+                print(sub2, nota, libreta[seccion][nota]['text'])
             print()
 
 
 def add(msj='', seccion=DEFAULT_SECTION):
+    if seccion not in libreta:
+        print(f'¡Nueva sección creada! \"{seccion}\"')
+        libreta[seccion] = dict()
 
     T_NOTAS = len(libreta[seccion])
     ID_NOTA_NUEVA = T_NOTAS + 1
@@ -77,6 +82,7 @@ def add(msj='', seccion=DEFAULT_SECTION):
     libreta[seccion][ID_NOTA_NUEVA]['text'] = msj
 
     print('Nota agregada.')
+    show()
 
 def menu():
     print(
@@ -93,11 +99,14 @@ def menu():
     elif opc == '1':
         show()
     elif opc == '2':
-        add(input('...: '))
+        add(input('Texto de la nota: '))
     menu()
 
 def main():
-    # Comandos reconocidos / valid arguments.
+    '''
+    Recibe argumento(s) y dependiendo de la cantidad, 
+    se decide la operación que se efectuará.
+    '''
     betainfo('main')
     if T_ARGS == 1:
         betainfo('one argument')
@@ -109,7 +118,21 @@ def main():
             betainfo('recognized argument')
             menu()
         elif argv[1] == 'add':
-            add(argv[2])
+            if T_ARGS == 2: 
+                # Si hay un segundo argumento, 
+                # se añade como texto a una nota nueva
+                # en la sección por defecto.
+                 add(argv[2])
+            elif T_ARGS == 5 and argv[3] in ['-s', '--seccion']:
+                #print(argv[3], argv[4])
+                add(argv[2], argv[4])
+            else:
+                argv.pop(0)
+                argv.pop(0)
+                sentence = ''
+                for argus in argv:
+                    sentence += ' ' + argus
+                add(sentence.strip())
         else:
             if argv[1] in libreta:
                 show(argv[1])
