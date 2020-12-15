@@ -2,7 +2,7 @@
 
 from sys import argv
 
-from utils import clrscr
+from utils import clrscr, subrayar
 
 # Constantes
 T_ARGS= len(argv) # Total de argumentos.
@@ -61,7 +61,7 @@ def add(msj='', seccion=DEFAULT_SECTION):
 
 def menu():
     print(
-    "Willkommen мой друг",
+    subrayar("Willkommen мой друг"),
     "Opciones disponibles:",
     "1) MostraR LiBreTa",
     "2) Añadir NoTa.",
@@ -70,7 +70,7 @@ def menu():
 
     opc = input("Opcion: ")
     if opc == '0':
-        exit()
+        return 1
     elif opc == '1':
         show()
     elif opc == '2':

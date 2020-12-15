@@ -9,10 +9,50 @@ def clrscr():
       # for windows platfrom
       _ = os.system('cls')
 
-def help():
+def help(auto_print=False):
+   """
+   La ayuda es una lista que
+   retorna cada elemento con
+   un salto de línea al final.
+   """
    msg =[
       'Ayuda con los comandos.',
-      'libreta\t\t\t#Muestra las secciones con todas las notas.',
-      'libreta add "Terminar documentación"\t\t#Añade una nota.'
+      'libreta                                 #Muestra las secciones con todas las notas.',
+      'libreta add "Terminar documentación"    #Añade una nota.'
    ]
-   return '\n'.join(msg)
+   if auto_print:
+      print('\n'.join(msg))
+   else: 
+      return '\n'.join(msg)
+
+def subrayar(texto, caracter='=', porPalabra=True, auto_print=True):
+   """
+   Subraya un texto con un caracter especial
+   
+   Parametros y su descripción:
+   texto: string del contenido que será subrayado.
+   caracter: string del símbolo que se usará para subrayar.
+   porPalabra: Booleano que indica si los espacios no serán subrayados, por defecto True.
+   auto_print: Booleano que indica si se imprime directamente en pantalla sin retorno, por defecto True.
+   """
+   palabras = texto.split(' ')
+   largoConEspacios = len(texto)
+   subrayado = ''
+   retorno = ''
+   if porPalabra:
+      retorno += texto + '\n'
+
+      for palabra in palabras:
+         subrayado += (caracter * len(palabra)) + ' '
+      retorno += subrayado
+      
+   else:
+      subrayado = caracter * largoConEspacios
+      retorno += texto + '\n' + subrayado
+
+   if auto_print: 
+      retorno += '\n'
+      print(retorno, end='')
+   else:
+      return retorno
+      
