@@ -1,11 +1,15 @@
-<h1 align="center">
+﻿<h1 align="center">
   Libreta
 </h1>
 
 <h4 align="center">
   Simple CLI notes taker.
 </h4>
-[![GitHub version](https://img.shields.io/badge/version-0.1-red.svg)](https://github.com/######)
+
+< p align="center">
+  An screenshot should appear here...
+  <a href="https://github.com/marfullsen/libreta"><img src="https://img.shields.io/pypi/badge/version-0.1-red.svg"></a>
+</p>
 
 ---
 ## Desc
@@ -13,7 +17,8 @@
 Libreta is a simple command-line tool for the terminal, it helps to take useful notes and join them into sections.
 
 Read this document in:
-[Español](https://github.com/marfullsen/libreta/blob/master/docs/readme.ES.md), [简体中文](#), [Русский](#), [Français](#), [Deutsch](#), [Portuguese](#), [日本語](#), [한국어](#)
+[Español](https://github.com/marfullsen/libreta/blob/master/docs/readme.ES.md)
+
 ---
 ## Features
 - Simple and useful.
