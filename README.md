@@ -6,9 +6,9 @@
   Simple CLI notes taker.
 </h4>
 
-< p align="center">
+<p align="center">
   An screenshot should appear here...
-  <a href="https://github.com/marfullsen/libreta"><img src="https://img.shields.io/pypi/badge/version-0.1-red.svg"></a>
+  <a href="https://github.com/marfullsen/libreta"><img src="https://img.shields.io/badge/version-0.1-red.svg"></a>
 </p>
 
 ---
